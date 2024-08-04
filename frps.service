@@ -1,0 +1,15 @@
+[Unit]
+Description=frp-server
+After=network.target
+
+[Service]
+ExecStart=/opt/frp/frps -c /opt/frp/frps.toml
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+IgnoreSIGPIPE=true
+Restart=always
+RestartSec=10
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
